@@ -11,7 +11,7 @@ const User = require("../models/Users");
 //@route GET api/auth
 //@desc Test Route
 //@access Private
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
     res.json(user);
@@ -39,21 +39,24 @@ router.post(
       }
       //gets specific info out of req.body
       const { email, password } = req.body;
+      console.log(email, password)
   
       try {
         let user = await User.findOne({ email });
         //see if user exists
         if (!user) {
+          console.log("47")
           return res
             .status(400)
             .json({ errors: [{ msg: "Invalid credentials" }] });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
+        console.log("passwords", isMatch)
         if(!isMatch) {
             return res
             .status(400)
-            .json({errors: [{msg: "Invalid Crednetials"}]})
+            .json({errors: [{msg: "Invalid credentials"}]})
         }
 
         //get payload
@@ -69,6 +72,7 @@ router.post(
           { expiresIn: 360000 },
           (err, token) => {
             if(err) throw err;
+            console.log(token)
             res.json({ token });
           }
         );
