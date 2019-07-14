@@ -8,10 +8,13 @@ class EntryForm extends Component {
           <div className="card-header">Enter New Stats</div>
           <div className="card-body">
             <h4 className="card-title">Primary card title</h4>
-            <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+            <form>
+            <div className="form-group">
+            <input className="form-control" placeholder="Current Weight"/>
+            <h5>calculated BMI</h5>
+            </div>
+            </form>
+
           </div>
         </div>
       </div>
