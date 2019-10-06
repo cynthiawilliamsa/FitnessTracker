@@ -12,25 +12,27 @@ class Dashboard extends Component {
   componentDidMount() {
     //@GET
     //@desc Retreives authenticated user's name and email.
+    console.log('dashboard mount')
     axios('/api/auth', {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token")
       },
     })
     .then(response => {
       console.log('success: ', response);
-      // if(response.status === 200) {
-      //   this.setState({name: response.data.name})
-      // }
+      if(response.status === 200) {
+        this.setState({name: response.data.name})
+      }
     })
     
   }
   render() {
-    console.log(this.props);
+    console.log(this.state.name);
     return (
       <div>
-        <NavBar/>
+        <NavBar name={this.state.name}/>
         <div className="container justify-content-center align-items-center">
           <div className=" row align-items-center card-deck">
             <div className="col-4">
