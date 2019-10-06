@@ -42,8 +42,10 @@ class SignUp extends Component {
       .then(response => {
         console.log("success: ", response);
         if (response.status === 200) {
+          
           this.redirectPage();
-          this.props.setAuth();         
+          // this.props.setAuth();
+
           
         }
       })
