@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = props => {
-
+const NavBar = () => {
+    // const {name} = this.props;
     const signOut = () => {
         localStorage.removeItem('token');
     }
@@ -41,7 +41,7 @@ const NavBar = props => {
       </div>
       <div className="" style={{ float: "right" }}>
         <ul className="navbar-nav">
-          <li className="nav-text"><i className="far fa-user"></i><span className="mx-1">User Name</span></li>
+          <li className="nav-text"><i className="far fa-user"></i><span className="mx-1">user name</span></li>
         </ul>
       </div>
     </nav>

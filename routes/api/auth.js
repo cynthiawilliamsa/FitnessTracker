@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/Users");
 
 //@route GET api/auth
-//@desc Test Route
+//@desc Get's authenticated user data
 //@access Private
 router.get("/", auth, async (req, res) => {
   try {

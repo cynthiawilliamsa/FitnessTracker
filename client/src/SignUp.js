@@ -41,17 +41,20 @@ class SignUp extends Component {
     })
       .then(response => {
         console.log("success: ", response);
-        if (response.status === 200) { 
-          this.props.setAuth();         
+        if (response.status === 200) {
           this.redirectPage();
+          this.props.setAuth();         
+          
         }
       })
       .catch(error => {
+        console.log("catch")
         if (error.response) {
           console.log("failure: ", error.response.data);
           this.setState({
             errorMessage: error.response.data.msg
           }).then(() => {
+            console.log("second promise")
             //clear form
             console.log("form should clear");
             this.resetForm();
@@ -71,7 +74,7 @@ class SignUp extends Component {
   };
 
   render() {
-      const {name, email, password, confirmPassword} = this.state
+      const {password, confirmPassword} = this.state
 
     // disables sign up button until email is unique, password inputs are not empty
     // and are equal and rank is selected
