@@ -5,7 +5,7 @@ class Progress extends Component {
     return (
       <div>
         <div className="card text-white bg-primary mb-3">
-          <div className="card-header">Enter New Stats</div>
+          <div className="card-header">Progress Chart</div>
           <div className="card-body">
             <h4 className="card-title">Primary card title</h4>
             <p className="card-text">
